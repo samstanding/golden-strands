@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Modal from 'react-bootstrap/lib/Modal';
 
 class RegisterPage extends Component {
     constructor(props) {
@@ -70,40 +71,44 @@ renderAlert() {
 
  render() {
      return (
-         <div>
-             {this.renderAlert()}
+         <div className="static-modal text-center">
+             <Modal.Dialog>
              <form onSubmit={this.registerUser}>
+             <Modal.Header>
                 <h1>Register User</h1>
-                <div>
-                    <label htmlFor="username">
-                    Username:  
+                </Modal.Header>
+                <Modal.Body>
+                <div className="auth-inputs"> 
                     <input 
                         type="text"
                         name="username"
+                        placeholder="username"
                         value={this.state.username}
                         onChange={this.handleInputChangeFor('username')}
                     />
-                    </label>
                 </div>
-                <div>
-                    <label htmlFor="password">
-                    Password:   
+                <div className="auth-inputs">
                     <input 
                         type="password"
                         name="password"
+                        placeholder="password"
                         value={this.state.password}
                         onChange={this.handleInputChangeFor('password')}
                     />
-                    </label>
                 </div>
+                { this.renderAlert() }
+                </Modal.Body>
                 <div>
+                    <Modal.Footer>
                     <input 
                         type="submit"
                         name="submit"
                         value="Register"
                     />
+                    </Modal.Footer>
                 </div>
             </form>
+            </Modal.Dialog>
         </div>
         );
     }

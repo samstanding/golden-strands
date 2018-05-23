@@ -67,12 +67,10 @@ render() {
             <Modal.Dialog>
             <form onSubmit={this.login}>
             <Modal.Header>
-                <div className="text-center">
                 <h1>Login</h1>
-                </div>
                 </Modal.Header>
                 <Modal.Body>
-                <div>
+                <div className="auth-inputs">
                     <input 
                         type="text"
                         name="username"
@@ -81,7 +79,7 @@ render() {
                         onChange={this.handleInputChangeFor('username')}
                     />
                 </div>
-                <div>
+                <div className="auth-inputs">
                     <input  
                         type="password"
                         name="password"
