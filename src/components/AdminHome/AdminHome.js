@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import ReactFilestack from 'react-filestack';
-import FormGroup from 'react-bootstrap/lib/FormGroup';
-import ControlLabel from 'react-bootstrap/lib/ControlLabel';
-import FormControl from 'react-bootstrap/lib/FormControl';
+import { FormGroup, ControlLabel, FormControl, Grid, Row, Col } from 'react-bootstrap';
 
 class AdminHome extends Component {
     constructor(props) {
@@ -25,45 +23,72 @@ class AdminHome extends Component {
     post = (e) => {
         e.preventDefault();
         axios.post('/api/blog/', { post: this.state })
-        .then(response => console.log(response))
+        .then(response =>{
+            alert('Your post was successful');
+        } )
         .catch(error => console.log(error));
     }
+    
 
     render() {
         return (
-            <div>
-                <h1>Golden Strands</h1>
-                <h3>Add a Post</h3>
-                <form onSubmit={this.post}>
-                <ControlLabel>Title</ControlLabel>
-                <FormControl 
-                id="formControlsText"
-                type="text" 
-                placeholder="Title" 
-                label="Title" 
-                value={this.state.title} 
-                onChange={this.handleChangeFor('title')}
-                />
-                <FormGroup>
-                    <textarea type="text" value={this.state.body} onChange={this.handleChangeFor('body')}/>
-                </FormGroup>
-                <div className="input-group">
-                <ReactFilestack 
-                apikey={process.env.REACT_APP_FILESTACK_KEY} 
-                mode={'pick'}
-                onSuccess={(response) => {
-                    this.props.handleChangeFor('media_url');
-                    this.props.work.media_url=response.filesUploaded[0];
-                    console.log(response);
-                } }
-                onError={(e) => console.log(e)}
-                buttonText={''}
-                buttonClass="fs-button"
-                 />
-                 </div>
-                 <button className="btn btn-primary" type="submit">Submit</button>
+                <Grid>
+                    <Row className="form-header">   
+                        <Col md={12}>
+                            <h1>Golden Strands</h1>
+                        </Col>
+                    </Row>
+                    <Row className="form-header">   
+                        <Col md={12}>
+                            <h3>Add a Post</h3>
+                        </Col>
+                    </Row>
+                    <form onSubmit={this.post}>
+                    <Row className="blog-entry">
+                        <Col md={12}>
+                            <ControlLabel>Title</ControlLabel>
+                            <FormControl 
+                            id="formControlsText"
+                            type="text" 
+                            placeholder="Title" 
+                            label="Title" 
+                            value={this.state.title} 
+                            onChange={this.handleChangeFor('title')}
+                            />
+                        </Col>
+                    </Row>
+                    <Row className="blog-entry">
+                        <Col md={12}>
+                            <FormGroup controlId="formControlsTextarea">
+                                <ControlLabel>Body</ControlLabel>
+                                <FormControl componentClass="textarea" 
+                                style={{ height: 150 }}
+                                placeholder="Body"value={this.state.body} 
+                                onChange={this.handleChangeFor('body')}  />
+                            </FormGroup>
+                        </Col>
+                    </Row>
+                    <Row className="form-header">
+                        {/* <Col md={12}> */}
+                            <ReactFilestack 
+                            apikey={process.env.REACT_APP_FILESTACK_KEY} 
+                            mode={'pick'}
+                            onSuccess={(response) => {
+                                this.handleChangeFor('media_url');
+                                this.state.media_url=response.filesUploaded[0];
+                            } }
+                            onError={(e) => console.log(e)}
+                            buttonText={'Upload A Photo'}
+                            buttonClass="btn btn-primary"
+                            />
+                        {/* </Col> */}
+                    </Row>
+                    <hr/>
+                    <Row className="form-header">
+                        <button className="btn btn-primary" type="submit">Submit</button>
+                    </Row>
                 </form>
-            </div>
+            </Grid>
         )
     }
 }

@@ -6,7 +6,7 @@ router.post('/', (req, res) => {
     console.log(req.body);
     if(req.isAuthenticated()) {
         pool.query('INSERT INTO post (title, body, media_url) VALUES ($1, $2, $3);',
-    [req.body.post.title, req.body.post.body, req.body.post.media_url ], (error, result) => {
+    [req.body.post.title, req.body.post.body, req.body.post.media_url.url ], (error, result) => {
         if(error) {
             console.log(error);
             res.sendStatus(500);
