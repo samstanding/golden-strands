@@ -7,9 +7,6 @@ import logger from 'redux-logger';
 import reducer from './redux/reducers';
 import App from './App';
 import rootSaga from './redux/sagas';
-// import registerServiceWorker from './registerServiceWorker';
-// import 'bootstrap/dist/css/bootstrap.css';
-// import 'bootstrap/dist/css/bootstrap-theme.css';
 
 
 const preloadedState = {};

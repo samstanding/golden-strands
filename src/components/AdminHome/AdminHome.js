@@ -32,7 +32,7 @@ class AdminHome extends Component {
 
     render() {
         return (
-                <Grid>
+                <Grid fluid={true}>
                     <Row className="form-header">   
                         <Col md={12}>
                             <h1>Golden Strands</h1>
@@ -45,7 +45,7 @@ class AdminHome extends Component {
                     </Row>
                     <form onSubmit={this.post}>
                     <Row className="blog-entry">
-                        <Col md={12}>
+                        <Col md={6} mdPush={3} xs={12} sm={6} smPush={3} >
                             <ControlLabel>Title</ControlLabel>
                             <FormControl 
                             id="formControlsText"
@@ -58,7 +58,7 @@ class AdminHome extends Component {
                         </Col>
                     </Row>
                     <Row className="blog-entry">
-                        <Col md={12}>
+                        <Col md={6} mdPush={3} xs={12} sm={6} smPush={3}>
                             <FormGroup controlId="formControlsTextarea">
                                 <ControlLabel>Body</ControlLabel>
                                 <FormControl componentClass="textarea" 
@@ -75,8 +75,9 @@ class AdminHome extends Component {
                             mode={'pick'}
                             onSuccess={(response) => {
                                 this.handleChangeFor('media_url');
-                                this.state.media_url=response.filesUploaded[0];
-                            } }
+                                this.setState({
+                                    media_url: response.filesUploaded[0],
+                                })}}
                             onError={(e) => console.log(e)}
                             buttonText={'Upload A Photo'}
                             buttonClass="btn btn-primary"

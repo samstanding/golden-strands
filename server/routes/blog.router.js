@@ -19,5 +19,15 @@ router.post('/', (req, res) => {
     }
 });
 
+router.get('/', (req, res) => {
+    pool.query('SELECT * FROM post ORDER BY id DESC;')
+    .then((result) => {
+        res.send(result.rows);
+    }).catch((error) => {
+        console.log(error);
+        res.sendStatus(500);
+    })
+})
+
 
 module.exports = router;

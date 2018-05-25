@@ -5,17 +5,48 @@
 }
 
 .blog-entry {
-  width: 50%;
-  margin :auto;
+  margin-right: auto;
+  margin-left: auto;
   padding-bottom:10px;
 }
 
-.body-entry {
-  width:50%;
-  margin:auto;
-}
-
-
 .auth-inputs {
   padding: 5px
+}
+
+.navbar-default {
+  background-color: rgba(0,0,0,0.0);
+  border-bottom: 0; 
+}
+
+.nav-props {
+  color: white !important;
+}
+
+header {
+  background-image: url('../gldn_strands_2.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border-top: 0;
+  padding: 0;
+  width:100%;
+  height:63%;  
+  position:absolute;
+  top:0px
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.header-text {
+  color:white;
+  text-align: center;
+  position: relative;
+  top:20%;
+}
+
+.blog-posts {
+  margin-top:40%
 }

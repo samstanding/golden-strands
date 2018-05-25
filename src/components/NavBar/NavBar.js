@@ -1,30 +1,29 @@
-import React, { Component } from 'react';
-import Navbar from 'react-bootstrap/lib/Navbar';
-import Nav from 'react-bootstrap/lib/Nav';
+import React from 'react';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
-const styles = {
-    box: {
-        height: '128px',
-    },
-}
 
 export const NavBar = () => (
     <div>
     <Navbar>
         <Navbar.Header>
-            <Navbar.Brand>
-                The Golden Strands Almanac 
+            <Navbar.Brand >
+                <span className="nav-props">Golden Strands</span>
             </Navbar.Brand>
             <Navbar.Toggle />
         </Navbar.Header>
-        <Nav pullRight>
-            {/* <NavItem>
-                Link
-            </NavItem>
-            <NavItem>
-                Link
-            </NavItem>   */}
-        </Nav>
+        <Navbar.Collapse>
+            <Nav pullRight> 
+                <NavItem >
+                    <span className="nav-props">Home</span>
+                </NavItem>
+                <NavItem>
+                    <span className="nav-props">About</span>
+                </NavItem>   
+                <NavItem>
+                    <span className="nav-props">Contact</span>
+                </NavItem>   
+            </Nav>
+         </Navbar.Collapse>
     </Navbar>
-    </div>
+    </div> 
 );
