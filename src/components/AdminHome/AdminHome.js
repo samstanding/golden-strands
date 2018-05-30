@@ -27,6 +27,11 @@ class AdminHome extends Component {
             alert('Your post was successful');
         } )
         .catch(error => console.log(error));
+        this.setState({
+            title:'',
+            body:'',
+            media_url:''
+        })
     }
     
 
